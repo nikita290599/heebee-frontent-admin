@@ -1,0 +1,196 @@
+.head-div{
+    margin:0 !important;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.item-content {
+    
+    font-weight:500;
+    font-size:14px;
+    height:100%;
+    display:flex;
+    justify-content: start;
+    align-items: center;
+}
+.side-icon{
+    width: 50px !important;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    margin-right:0 !important;
+}
+
+.widthOfSide{
+    width:240px !important;
+}
+.widthOfSide div:first-child{
+    min-width: 240px ; 
+
+}
+#sidebar-main .toggled{
+    min-width: 80px !important;
+}
+.head-div.toggled{
+    height:79px;
+    width: 100%;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.toggled .item-content{
+    visibility: hidden;
+}
+
+.widthOfSide li div{
+  width:100% !important;
+  min-width:100% !important;
+  color:black;
+  border-radius: 10px;
+}
+.widthUntoggled li div{
+    
+    color:black;
+  }
+.widthOfSide li div:hover,.widthOfSide li div:focus,.widthUntoggled li div:hover,.widthUntoggled li div:focus{
+  background-color:var(--primary-color-light) ;
+  color:var(--primary-color);
+}
+.accordion-button:not(.collapsed) {
+    background-color:#D9D2C0 !important ;
+  color:var(--primary-color) !important;
+  box-shadow: 0 0 0 0 black;
+}
+.accordion-button:focus{
+    box-shadow: 0 0 0 0 black; 
+}
+
+.sidebar-submenu.accordion-item{
+  border:0 solid white;
+  text-align: center;
+  width:89% !important;
+  min-width: 89% !important;
+  background-color:var(--primary-color-light) ;
+  color:var(--primary-color);
+  margin:auto;
+  border-radius: 10px !important;
+margin-bottom: 10px;}
+.sidebar-submenu.accordion-item button{
+ width:100%;
+ font-size: 14px;
+ border-radius: 10px !important;
+ padding:13px 2px 13px 7px;
+}
+.widthOfSide .sidebar-submenu.accordion-item button:hover,.widthOfSide .sidebar-submenu.accordion-item button:focus,.widthUntoggled .sidebar-submenu.accordion-item button:hover{
+    background-color:#D9D2C0;
+    color:var(--primary-color);
+}
+.widthUntoggled .sidebar-submenu.accordion-item button{
+    width:100%;
+    font-size: 18px;
+    display:flex;
+    justify-content: center;
+    margin-left: 0;
+    padding: 6px 0;
+   }
+.sidebar-submenu.accordion-item svg{
+  font-size: 18px;
+  color:black;
+}
+.widthUntoggled .w-75{
+    display:none;
+}
+.widthUntoggled .w-25{
+    width:100% !important;
+    font-size: 20px !important;
+}
+.sidebar-submenu .accordion-body{
+    width:100%;
+    min-width: 100% !important;
+    text-align: left;
+    padding:0 2px 13px 7px;
+    font-size: 14px;
+}
+svg.col-3{
+    font-size: 20px;;
+}
+.accordion-button::after{
+    display: none;
+}
+.widthUntoggled section span{
+    display:none;
+}
+.widthUntoggled section svg{
+    width:60px;
+    color:black;
+    max-width: 60px;
+    padding: 0;
+}
+.widthOfSide #first{
+    display: none !important;
+}
+#overlay-example {
+  
+    background-color: rgba(97, 70, 47) !important;
+    color: black !important;
+    opacity: 1 !important;
+    height: 30px;
+  margin-left: -20px;
+  z-index:1100;
+  }
+@media screen and (max-width:768px){
+    .head-div .head-text{
+        display:none;
+    }
+  
+    .head-div{
+        width:80px;
+        height:80px;
+        margin:0;
+        padding:0 !important;
+        display:flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      
+
+    }
+    .widthOfSide{
+        width:80px !important;
+        min-width: 80px !important;
+    }
+    .widthOfSide div:first-child{
+        width:0 !important;
+        min-width: 0 !important; 
+    }
+    .widthUntoggled div:first-child{
+        width:80px !important;
+        min-width: 80px !important;
+    }
+    #sidebar-main .head-div{
+     position: fixed;
+     left:0;
+     min-width:80px !important;
+     background-color: #252B3B;
+    }
+        .sidebar-content{
+            padding-top:80px !important;
+        }
+ 
+   span.item-content{
+       visibility:hidden;}
+}
+@media screen and (max-width:720px){
+    .widthOfSide .pro-sidebar{
+        display:none;
+    }
+    .widthUntoggled div:first-child{
+        width:80px !important;
+        min-width: 80px !important;
+    }
+    .widthOfSide .head-div .icon-suffix{
+        position: fixed;
+      
+       }
+}

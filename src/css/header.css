@@ -1,0 +1,33 @@
+.bar-icon{
+    position:absolute;
+  
+}
+.btn-fullscreen{
+    color:#879095;
+    font-size: 20px;
+}
+.header-logo{
+    position:fixed;
+    left:0;
+    width:80px;
+    background-color: #252B3B;
+    display:flex;
+    height:78px;
+    justify-content: center;
+    align-items: center;
+}
+#alert-button #dropdown-basic{
+    background-color: white;
+    padding: 0;
+    border:0 !important;
+}
+
+#dropdown-basic:focus{
+  box-shadow: 0 0 0 0 !important;
+
+}
+#user-button span,#user-button button{
+    font-family:Nunito,sans-serif;
+    font-size: 15px;
+    color:#636E75 ;
+}
