@@ -41,7 +41,7 @@ class RevenueAnalytics extends Component {
             legend: {
                 show: false,
             },
-            colors: ['rgba(102,77,3,0.5)', '#1cbb8c'],
+            colors: ['rgba(102,77,3,0.5)', '#292626'],
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         }
     }
@@ -91,7 +91,7 @@ class RevenueAnalytics extends Component {
                             </Col>
                             <Col sm={4}>
                                 <div className="mt-4 mt-sm-0">
-                                    <p className="mb-2 text-muted text-truncate ra-14"><BsFillCircleFill style={{color:"#1cbb8c"}}/> Previous Year :</p>
+                                    <p className="mb-2 text-muted text-truncate ra-14"><BsFillCircleFill style={{color:"#292626"}}/> Previous Year :</p>
                                     <div className="d-inline-flex">
                                         <h5 className="mb-0 me-2">$ 32,695</h5>
                                     </div>
