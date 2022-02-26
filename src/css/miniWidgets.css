@@ -31,10 +31,17 @@
 .ra-14{
     font-size: 14.4px;
 }
+.graph-buttons button:focus{
+    background-color: var(--primary-color-light) !important;
+    color:var(--primary-color);
+}
 /* doughnut.js */
 .dougnhut-text{
 font-size: 14.4px;
 font-family: Nunito,sans-serif;
 color:#505d69;
 
+}
+.icon-color{
+    color:var(--primary-color) !important;
 }

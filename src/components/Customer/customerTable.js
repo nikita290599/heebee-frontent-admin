@@ -168,7 +168,7 @@ class CustomerTable extends Component {
             <Col className="col-12">
               <Card>
                 <Card.Body>
-                  <Card.Title className="h4">Default Datatable </Card.Title>
+                  <Card.Title className="h4 mb-2">Customer Datatable </Card.Title>
 
                   <PaginationProvider
                     pagination={paginationFactory(pageOptions)}

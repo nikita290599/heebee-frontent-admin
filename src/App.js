@@ -5,10 +5,12 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import './App.css';
 import Dashboard from './components/Dashboard/dashboard';
 import Customer from './components/Customer/customer';
+import AllCustomer from './components/Customer/Allcustomer';
 import React, { useState } from 'react';
 import Footer from './components/footer';
+import Sidebar2 from './components/Sidebar2';
 function App() {
-  const [sideToggle,setSideToggle]=useState(true);
+  const [sideToggle,setSideToggle]=useState(false);
   const handle = useFullScreenHandle();
   return (
     <Router>
@@ -18,8 +20,10 @@ function App() {
 <Sidebar handle={handle} setSideToggle={setSideToggle} sideToggle={sideToggle}/>
 <Routes>
   {/* <Route path="*" element={<Error />} /> */}
-  <Route  path='/' element={<Dashboard sideToggle={sideToggle}/>}></Route>
-  <Route  path='/customer' element={<Customer sideToggle={sideToggle}/>}></Route>
+  <Route exact path='/' element={<Dashboard sideToggle={sideToggle}/>}></Route>
+  <Route exact  path='/allCustomer' element={<AllCustomer sideToggle={sideToggle}/>}></Route>
+  <Route exact path='/customer' element={<Customer sideToggle={sideToggle}/>}></Route>
+ 
 
 </Routes>
 <Footer/>

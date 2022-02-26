@@ -1,20 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
-import {
-  CDBSidebar,
-  CDBSidebarContent,
-  CDBSidebarHeader,
-  CDBSidebarMenu,
-  CDBSidebarMenuItem,
-} from 'cdbreact';
-import { OverlayTrigger, Popover, Accordion,Overlay,Tooltip } from "react-bootstrap";
 import { NavLink } from 'react-router-dom';
 import logo from "../assets/logo.png";
 import "../css/sidebar.css"
 import Header from './header';
 import { FaUsers } from "react-icons/fa";
-import { FiUserPlus } from "react-icons/fi";
+import { RiDashboardFill } from "react-icons/ri";
+import { GrUserWorker } from "react-icons/gr";
+import { FaClipboardList } from "react-icons/fa";
+import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
 const Sidebar = (props) => {
-  const [widthSide, setWidth] = useState("270px");
+  const [widthSideMax, setWidthMax] = useState("240px");
+  const [widthOfSideMin, setWidthMin] = useState("80px");
+  const [widthSide,setWidthSide]=useState("270px");
   const size = useWindowSize();
   function useWindowSize() {
 
@@ -41,10 +39,13 @@ const Sidebar = (props) => {
   useEffect(() => {
 
     if (window.innerWidth <= "768") {
-      setWidth("100px");
+      setWidthMax("0");
+      setWidthMin("80px");
     }
     if (window.innerWidth > "768") {
-      setWidth("270px");
+      setWidthMax("240px");
+      setWidthMin("80px");
+      setWidthSide("270px");
     }
 
 
@@ -52,106 +53,56 @@ const Sidebar = (props) => {
 
 
   const clickHandler = () => {
-
     if (size.width <= "768") {
-      if (props.sideToggle === false) { props.setSideToggle(true) } else { props.setSideToggle(false) }
-      if (props.sideToggle === false) {
-        setWidth("100px");
-      }
-      else {
-        setWidth("10px");
-      }
-    }
-    if (size.width <= "768" && size.width >= "720") {
-      if (props.sideToggle === true) { props.setSideToggle(false) } else { props.setSideToggle(true) }
-      if (props.sideToggle === false) {
-        setWidth("10px");
-      }
-      else {
-        setWidth("100px");
-      }
-    }
+      if (props.sideToggle === false) { props.setSideToggle(true)  } else { props.setSideToggle(false)  }
 
+    }
     if (size.width > "768") {
-      if (props.sideToggle === true) { props.setSideToggle(false) } else { props.setSideToggle(true) }
-      if (props.sideToggle === false) {
-        setWidth("270px");
-      }
-      else {
-        setWidth("100px");
-      }
+      if (props.sideToggle === true) { props.setSideToggle(false) ; setWidthSide("270px")} else { props.setSideToggle(true); setWidthSide("100px") }
+
     }
 
   }
-  const [show, setShow] = useState(false);
-  const target = useRef(null);
+
+
   return (
     <React.Fragment>
-      <Header widthSide={widthSide} handle={props.handle} />
+      <Header handle={props.handle} widthSide={widthSide} />
       <div id="sidebar-main" style={{ display: 'flex', height: '100vh', overflow: 'scroll initial', zIndex: "1001", position: "fixed", top: "0" }} className={props.sideToggle === true ? "widthOfSide" : "widthUntoggled"}>
-        <CDBSidebar backgroundColor="#FFF"  >
-          <CDBSidebarHeader prefix={<img id="mainLeftTrigger" src={logo} width="26px" alt="logo" onClick={clickHandler} className="sidebar-logo"></img>} >
-            <a href="/" className="text-decoration-none" style={{ color: '#664d03' }}>
-              HEEBEE
-            </a>
-          </CDBSidebarHeader>
-          <CDBSidebarContent className="sidebar-content">
-            <CDBSidebarMenu open={props.sideToggle} defaultOpen="false" >
-              <NavLink to="/" >
-                <CDBSidebarMenuItem icon="columns"> Dashboard</CDBSidebarMenuItem>
-              </NavLink>
-              <NavLink to="/customer" >
-                <Overlay target={target.current} show={show} placement="right">
-                  {(props) => (
-                    <div id="overlay-example" {...props}>
-                      Customer
-                    </div>
-                  )}
-                </Overlay>
+        <ProSidebar id="my-sidebar" width={widthSideMax} collapsedWidth={widthOfSideMin} collapsed={props.sideToggle} >
+          <SidebarHeader >
+            <div id="mainLeftTrigger" className='d-flex justify-content-center align-items-center' style={{ height: "77px" }} onClick={clickHandler}>
+              <img src={logo} width="26px" alt="logo"  ></img>
+            </div>
 
-                <CDBSidebarMenuItem icon="user" ref={target} onFocus={()=>{setShow(!show)}} onMouseEnter={() => {if(widthSide==="100px")setShow(true)}} onMouseLeave={()=>{setShow(false)}} >Customer</CDBSidebarMenuItem>
+          </SidebarHeader>
+          <SidebarContent>
+            <Menu iconShape="square" >
+              <SubMenu title="Dashboard" icon={<RiDashboardFill />}>
+              <NavLink to="/" ><MenuItem>My Dashboard</MenuItem></NavLink>
+              </SubMenu>
+            
+              <SubMenu title="Customer" icon={<FaUsers />}>
+              <MenuItem><NavLink exact="true" to="/customer" >Customer Dashboard</NavLink></MenuItem>
+              <MenuItem><NavLink exact="true" to="/allCustomer">All Customers</NavLink></MenuItem>
+              </SubMenu>
+              <SubMenu title="Employees" icon={<GrUserWorker />}>
+                <MenuItem>All Employees</MenuItem>
+                <MenuItem>Add New</MenuItem>
+              </SubMenu>
+              <SubMenu title="Catalog" icon={<FaClipboardList />}>
+                <MenuItem>Add Category</MenuItem>
+                <MenuItem>Add Food Item</MenuItem>
+              </SubMenu>
+              <SubMenu title="Franchise" icon={<FaClipboardList />}>
+                <MenuItem>All Branch</MenuItem>
+                <MenuItem>Add Branch</MenuItem>
+                <MenuItem>Add Franchise</MenuItem>
+              </SubMenu>
+            </Menu>
+          </SidebarContent>
 
-
-              </NavLink>
-              <Accordion className='sidebar-acc'>
-                <Accordion.Item eventKey="0" className="sidebar-submenu">
-                  <Accordion.Header >
-                    <div className='d-flex justify-content-start submenu-inner'>
-                      <FaUsers className='w-25' /><div className='w-75'>Employees</div>
-                    </div>
-
-                  </Accordion.Header>
-                  <Accordion.Body>
-                    <section className='mb-3'><FiUserPlus className='col-3' />
-                      <span className='col-9 pl-2'>Add new</span></section>
-                    <section><FiUserPlus className='col-3' />
-                      <span className='col-9 pl-2'>Add new</span></section>
-
-
-                  </Accordion.Body>
-                </Accordion.Item>
-
-
-                <Accordion.Item eventKey="1" className="sidebar-submenu">
-                  <Accordion.Header>  <div className='d-flex justify-content-start submenu-inner'>
-                    <FaUsers className='w-25' /><div className='w-75'>Employees</div>
-                  </div></Accordion.Header>
-                  <Accordion.Body>
-
-
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
-
-              <NavLink to="/catalog" >
-                <CDBSidebarMenuItem icon="clipboard">Catalog</CDBSidebarMenuItem>
-              </NavLink>
-              <NavLink to="/franchise" target="_blank" >
-                <CDBSidebarMenuItem icon="industry">Franchise</CDBSidebarMenuItem>
-              </NavLink>
-            </CDBSidebarMenu>
-          </CDBSidebarContent>
-        </CDBSidebar>
+        </ProSidebar>
       </div>
     </React.Fragment>
 

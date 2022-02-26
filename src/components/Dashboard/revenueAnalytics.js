@@ -6,6 +6,7 @@ import ReactApexChart from 'react-apexcharts';
 import "../../css/miniWidgets.css"
 import {BsFillCircleFill} from "react-icons/bs";
 import {VscTriangleUp} from "react-icons/vsc";
+
 class RevenueAnalytics extends Component {
     state = {
         series: [{
@@ -40,7 +41,7 @@ class RevenueAnalytics extends Component {
             legend: {
                 show: false,
             },
-            colors: ['#5664d2', '#1cbb8c'],
+            colors: ['rgba(102,77,3,0.5)', '#1cbb8c'],
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         }
     }
@@ -50,7 +51,7 @@ class RevenueAnalytics extends Component {
                 <Card className="mt-4">
                     <Card.Body>
                         <div className="float-end d-none d-md-inline-block">
-                            <ButtonGroup className="mb-2" style={{fontFamily:"Nunito,sans-serif"}}>
+                            <ButtonGroup className="mb-2 graph-buttons" style={{fontFamily:"Nunito,sans-serif"}}>
                                 <Button size="sm" variant="light" style={{backgroundColor:"#EFF2F7",fontSize:"13px"}} type="button">Today</Button>
                                 <Button size="sm" variant="light" style={{backgroundColor:"#EFF2F7",fontSize:"13px"}} type="button">Weekly</Button>
                                 <Button size="sm" variant="light" style={{backgroundColor:"#EFF2F7",fontSize:"13px"}} type="button">Monthly</Button>
@@ -79,7 +80,7 @@ class RevenueAnalytics extends Component {
 
                             <Col sm={4}>
                                 <div className="mt-4 mt-sm-0">
-                                    <p className="mb-2 text-muted text-truncate ra-14"><BsFillCircleFill style={{color:"#5664d2"}}/> This Year :</p>
+                                    <p className="mb-2 text-muted text-truncate ra-14"><BsFillCircleFill style={{color:"rgba(102,77,3,0.5)"}}/> This Year :</p>
                                     <div className="d-inline-flex">
                                         <h5 className="mb-0 me-2">$ 34,254</h5>
                                         <div className="text-success">

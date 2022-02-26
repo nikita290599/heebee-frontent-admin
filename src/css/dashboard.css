@@ -1,12 +1,12 @@
 .openDash{
    
     padding-left:265px;
-    transition: 0.2s all ease;
+    transition: 0.3s all ease;
 }
 .closeDash{
 
     padding-left:100px;
-    transition: 0.2s all ease;
+    transition: 0.3s all ease;
 }
 .dash-head{
     font-size: 15px;
@@ -15,18 +15,6 @@
 }
 
 @media screen and (max-width:768px){
-    .openDash{
-   
-        padding-left:10px;
-        transition: 0.2s all ease;
-    }
-    .closeDash{
-
-        padding-left:100px;
-        transition: 0.2s all ease;
-    }
-}
-@media screen and (max-width:720px){
     .openDash{
    
         padding-left:10px;

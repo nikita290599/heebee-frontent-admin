@@ -17,7 +17,7 @@ const Dashboard = (props) => {
     return (
         <React.Fragment>
            
-            <Container fluid className={props.sideToggle===false?"closeDash":"openDash"} style={{paddingTop:"95px",backgroundColor:"#F1F5F7"}} >
+            <Container fluid className={props.sideToggle===true?"closeDash":"openDash"} style={{paddingTop:"95px",backgroundColor:"#F1F5F7"}} >
             <Row>
                 <Col className="dash-head">DASHBOARD</Col>
             </Row>
