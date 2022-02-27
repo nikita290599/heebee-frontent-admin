@@ -79,7 +79,7 @@ const Sidebar = (props) => {
 
           </SidebarHeader>
           <SidebarContent>
-            <Menu iconShape="circle" >
+            <Menu iconShape="round" >
               <SubMenu title="Dashboard" icon={<RiDashboardFill />}>
               <NavLink to="/" ><MenuItem>My Dashboard</MenuItem></NavLink>
               </SubMenu>
