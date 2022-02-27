@@ -1,8 +1,8 @@
 
-.pro-sidebar .overlay{
+/* .pro-sidebar .overlay{
     display:none !important;
-}
-#my-sidebar .pro-sidebar-inner{
+} */
+/* #my-sidebar .pro-sidebar-inner{
     background-color: rgba( 248,249,250,1) !important;
 }
 .pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper{
@@ -16,9 +16,9 @@
     color:black ;
     font-size: 22px !important;
     font-weight: 700 !important;
-}
+} */
 
-.popper-inner{
+/* .popper-inner{
     background-color: #D8D2C1 !important;
     color:var(--primary-color) !important;
 }
@@ -44,4 +44,12 @@
     background-color:#D8D2C1 !important ;
     
     border-radius: 10px !important;
+} */
+.heebee-logo{
+    color:var(--primary-color);
+    padding-left: 20px !important;
+    font-size: 22px !important;
+}
+.widthOfSide .heebee-logo{
+    display: none;
 }

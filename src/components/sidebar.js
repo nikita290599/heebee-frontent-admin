@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from "../assets/logo.png";
-import "../css/sidebar.css"
+
 import Header from './header';
 import { FaUsers } from "react-icons/fa";
 import { RiDashboardFill } from "react-icons/ri";
@@ -9,6 +9,8 @@ import { GrUserWorker } from "react-icons/gr";
 import { FaClipboardList } from "react-icons/fa";
 import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
+import "../css/sidebar.css";
+import "../css/sidebar.scss";
 const Sidebar = (props) => {
   const [widthSideMax, setWidthMax] = useState("240px");
   const [widthOfSideMin, setWidthMin] = useState("80px");
@@ -71,13 +73,13 @@ const Sidebar = (props) => {
       <div id="sidebar-main" style={{ display: 'flex', height: '100vh', overflow: 'scroll initial', zIndex: "1001", position: "fixed", top: "0" }} className={props.sideToggle === true ? "widthOfSide" : "widthUntoggled"}>
         <ProSidebar id="my-sidebar" width={widthSideMax} collapsedWidth={widthOfSideMin} collapsed={props.sideToggle} >
           <SidebarHeader >
-            <div id="mainLeftTrigger" className='d-flex justify-content-center align-items-center' style={{ height: "77px" }} onClick={clickHandler}>
-              <img src={logo} width="26px" alt="logo"  ></img>
+            <div id="mainLeftTrigger" className='w-100 ' style={{ height: "77px" }} onClick={clickHandler}>
+             <div className='h-100 d-flex justify-content-center align-items-center'><img src={logo} width="26px" alt="logo" className='' ></img><div className='w-75 heebee-logo '>HeeBee</div></div> 
             </div>
 
           </SidebarHeader>
           <SidebarContent>
-            <Menu iconShape="square" >
+            <Menu iconShape="circle" >
               <SubMenu title="Dashboard" icon={<RiDashboardFill />}>
               <NavLink to="/" ><MenuItem>My Dashboard</MenuItem></NavLink>
               </SubMenu>
