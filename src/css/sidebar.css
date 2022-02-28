@@ -53,3 +53,6 @@
 .widthOfSide .heebee-logo{
     display: none;
 }
+#my-sidebar > div.pro-sidebar-inner > div > div.pro-sidebar-content > nav > ul > li > div.react-slidedown.pro-inner-list-item > div > ul > li:focus{
+background-color: brown !important;
+}

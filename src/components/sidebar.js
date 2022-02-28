@@ -81,12 +81,12 @@ const Sidebar = (props) => {
           <SidebarContent>
             <Menu iconShape="round" >
               <SubMenu title="Dashboard" icon={<RiDashboardFill />}>
-              <NavLink to="/" ><MenuItem>My Dashboard</MenuItem></NavLink>
+              <MenuItem>My Dashboard<NavLink to="/" /></MenuItem>
               </SubMenu>
             
               <SubMenu title="Customer" icon={<FaUsers />}>
-              <MenuItem><NavLink exact="true" to="/customer" >Customer Dashboard</NavLink></MenuItem>
-              <MenuItem><NavLink exact="true" to="/allCustomer">All Customers</NavLink></MenuItem>
+              <MenuItem>Customer Dashboard<NavLink exact="true" to="/customer" /></MenuItem>
+              <MenuItem>All Customers<NavLink exact="true" to="/allCustomer"/></MenuItem>
               </SubMenu>
               <SubMenu title="Employees" icon={<GrUserWorker />}>
                 <MenuItem>All Employees</MenuItem>
