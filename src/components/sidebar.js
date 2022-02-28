@@ -89,17 +89,17 @@ const Sidebar = (props) => {
               <MenuItem>All Customers<NavLink exact="true" to="/allCustomer"/></MenuItem>
               </SubMenu>
               <SubMenu title="Employees" icon={<GrUserWorker />}>
-                <MenuItem>All Employees</MenuItem>
-                <MenuItem>Add New</MenuItem>
+                <MenuItem>All Employees<NavLink to="/" /></MenuItem>
+                <MenuItem>Add New<NavLink to="/" /></MenuItem>
               </SubMenu>
               <SubMenu title="Catalog" icon={<FaClipboardList />}>
-                <MenuItem>Add Category</MenuItem>
-                <MenuItem>Add Food Item</MenuItem>
+                <MenuItem>Add Category<NavLink to="/" /></MenuItem>
+                <MenuItem>Add Food Item<NavLink to="/" /></MenuItem>
               </SubMenu>
               <SubMenu title="Franchise" icon={<FaClipboardList />}>
-                <MenuItem>All Branch</MenuItem>
-                <MenuItem>Add Branch</MenuItem>
-                <MenuItem>Add Franchise</MenuItem>
+                <MenuItem>All Branch<NavLink to="/" /></MenuItem>
+                <MenuItem>Add Branch<NavLink to="/" /></MenuItem>
+                <MenuItem>Add Franchise<NavLink to="/" /></MenuItem>
               </SubMenu>
             </Menu>
           </SidebarContent>

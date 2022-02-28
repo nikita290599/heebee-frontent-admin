@@ -26,13 +26,13 @@ const Header = (props) => {
                         <FontAwesomeIcon className="btn-fullscreen" icon={faExpand} />
                     </button>
                     {/* Notifications */}
-                    <Dropdown id="alert-button" className="ml-3">
-                        <Dropdown.Toggle id="dropdown-basic">
+                    <Dropdown id="alert-button" className="m-3 me-1">
+                        <Dropdown.Toggle id="dropdown-basic" className="m-auto">
                             <FontAwesomeIcon icon={faBell} style={{ color: "#879095", fontSize: "20px", margin: "auto" }} />
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <div className="" style={{ width: "330px", height: "340px", overflow: "hidden" }}>
+                            <div className="ml-3" style={{ width: "330px", height: "340px", overflow: "hidden" }}>
                                 <h6 className="p-2">Notifications</h6>
                                 <div style={{ height: "340px", overflowY: "auto",width:"100%" }}>
                                     <Dropdown.Item className="p-0 pt-2" href="#/action-1">
@@ -89,7 +89,7 @@ const Header = (props) => {
                         <Dropdown.Toggle className="" variant="light" id="dropdown-user">
                             <span >
                                 <img src={user} width="28px" height="28px" style={{ borderRadius: "50%" }}></img>
-                                <span className="ml-2 mr-2">Admin</span>
+                                <span className="mx-2">Admin</span>
                             </span>
                         </Dropdown.Toggle>
 
