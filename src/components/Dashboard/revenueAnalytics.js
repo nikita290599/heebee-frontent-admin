@@ -41,7 +41,7 @@ class RevenueAnalytics extends Component {
             legend: {
                 show: false,
             },
-            colors: ['rgba(102,77,3,0.5)', '#292626'],
+            colors: ['#6F7BD9', '#1CBB8C'],
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         }
     }
@@ -70,7 +70,7 @@ class RevenueAnalytics extends Component {
                             <Col sm={4}>
                             <p className="mb-2 text-muted text-truncate ra-14">This month :</p>
                                 <div className="d-inline-flex">
-                                    <h5 className="me-2">$12,253</h5>
+                                    <h5 className="me-2">₹12,253</h5>
                                     <div className="text-success">
                                     <VscTriangleUp/>2.2 %
                                                     </div>
@@ -80,9 +80,9 @@ class RevenueAnalytics extends Component {
 
                             <Col sm={4}>
                                 <div className="mt-4 mt-sm-0">
-                                    <p className="mb-2 text-muted text-truncate ra-14"><BsFillCircleFill style={{color:"rgba(102,77,3,0.5)"}}/> This Year :</p>
+                                    <p className="mb-2 text-muted text-truncate ra-14"><BsFillCircleFill style={{color:"#6F7BD9"}}/> This Year :</p>
                                     <div className="d-inline-flex">
-                                        <h5 className="mb-0 me-2">$ 34,254</h5>
+                                        <h5 className="mb-0 me-2">₹ 34,254</h5>
                                         <div className="text-success">
                                             <VscTriangleUp/>2.1 %
                                                         </div>
@@ -91,9 +91,9 @@ class RevenueAnalytics extends Component {
                             </Col>
                             <Col sm={4}>
                                 <div className="mt-4 mt-sm-0">
-                                    <p className="mb-2 text-muted text-truncate ra-14"><BsFillCircleFill style={{color:"#292626"}}/> Previous Year :</p>
+                                    <p className="mb-2 text-muted text-truncate ra-14"><BsFillCircleFill style={{color:"#1CBB8C"}}/> Previous Year :</p>
                                     <div className="d-inline-flex">
-                                        <h5 className="mb-0 me-2">$ 32,695</h5>
+                                        <h5 className="mb-0 me-2">₹ 32,695</h5>
                                     </div>
                                 </div>
                             </Col>

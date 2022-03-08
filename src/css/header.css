@@ -31,3 +31,13 @@
     font-size: 15px;
     color:#636E75 ;
 }
+.noti-dot{
+    position: absolute;
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    background-color: #ff3d60;
+    border-radius: 50%;
+    top: 0;
+    right: 14px;
+}

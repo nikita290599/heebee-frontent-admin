@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Dropdown } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpand } from "@fortawesome/free-solid-svg-icons";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
+import {RiFullscreenLine} from "react-icons/ri";
+import {RiNotification3Line} from "react-icons/ri";
 import "../css/header.css";
 import logo from "../assets/logo.png"
 import menu from "../assets/menu-2-fill.png";
@@ -23,12 +22,13 @@ const Header = (props) => {
                     <div className="header-logo"><img src={logo} width="26px" alt="header logo"></img></div>
                     {window.innerWidth > 769 ? <img className="bar-icon " src={menu} style={{ left: `${props.widthSide}`, zIndex: "1003" }} onClick={() => { document.getElementById('mainLeftTrigger').click() }} /> : <img className="bar-icon" src={menu} style={{ left: "100px", zIndex: "1003" }} onClick={() => { document.getElementById('mainLeftTrigger').click() }} />}
                     <button className="btn" onClick={props.handle.enter}>
-                        <FontAwesomeIcon className="btn-fullscreen" icon={faExpand} />
+                        <RiFullscreenLine style={{ color: "#636E75", fontSize: "22px", margin: "auto" }}/>
                     </button>
                     {/* Notifications */}
                     <Dropdown id="alert-button" className="m-3 me-1">
                         <Dropdown.Toggle id="dropdown-basic" className="m-auto">
-                            <FontAwesomeIcon icon={faBell} style={{ color: "#879095", fontSize: "20px", margin: "auto" }} />
+                        <RiNotification3Line style={{ color: "#636E75", fontSize: "22px", margin: "auto" }}/>
+                        <span className="noti-dot"></span>
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>

@@ -1,50 +1,44 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import React from "react";
-
+import { useState, useEffect } from "react";
 import "../../css/customer/customer.css";
-import { FaUsers} from "react-icons/fa";
-import { MdFastfood } from "react-icons/md";
-import CustomerDoughnut from "./customerDoughnut";
-import MiniWidgetsC from "./miniWidgetsC";
-import CustomerAnalytics from "./customerAnalytics";
-import CustomerTable from "./customerTable";
-const Customer = (props) => {
+import { Routes, Route } from "react-router-dom";
+import IndividualCustomer from "./individualCustomers";
+import AllCustomer from "./Allcustomer";
+import CustomerDashboard from "./customerDashboard";
+import faker from "@faker-js/faker";
+class Customer extends React.Component{
+    constructor(props){
+        super(props);
+        const fakeData = () => {
+            let array = [];
+            for (let index = 0; index < 50; index++) {
+              const element = { "id": `${faker.datatype.uuid()}`, "name": `${faker.name.findName()}`,"address":`${faker.address.streetAddress()} ${faker.address.cityName()}`, "email": `${faker.internet.email()}`, "telephone": `${faker.phone.phoneNumber()}`, "zip": `${faker.address.zipCode()}`, "city": `${faker.address.city()}`, "franchise": `${faker.address.streetAddress()}`, "order date": `${String(faker.date.recent()).slice(0,-30)}`,"gender":`${faker.name.gender(true)}` }
+              array.push(element);
+            }
+            return array;
+          }
+          const products = fakeData();
+        this.state = {
+            products: products,
+            currentCustomer:products[0]
+          }
+    }
+    setCustomer=(customer)=>{
+        this.setState({currentCustomer: customer});
+    }
+    render(){
+        return(<React.Fragment>
+            <Routes>
+                <Route path="/" element={<CustomerDashboard products={this.state.products} sideToggle={this.props.sideToggle} currentCustomer={this.state.currentCustomer} setCustomer={this.setCustomer} />} />
+                <Route path="/individual" element={<IndividualCustomer products={this.state.products}  sideToggle={this.props.sideToggle}  currentCustomer={this.state.currentCustomer} />} />
+                <Route path='/allCustomer' element={<AllCustomer products={this.state.products}  sideToggle={this.props.sideToggle}  currentCustomer={this.state.currentCustomer} setCustomer={this.setCustomer} />}></Route>
+            </Routes>
+        </React.Fragment>)
+        
+    }
+       
 
-    const reports = [
-        { icon: FaUsers, title: "Total Customers", value: "12577", rate: "2.7%", desc: "From previous period" },
-        { icon: MdFastfood, title: "Total Orders", value: "13676797", rate: "2.4%", desc: "From previous period" },
-
-    ]
-    return (
-        <React.Fragment>
-
-            <Container fluid className={props.sideToggle === true ? "closeDash" : "openDash"} style={{ paddingTop: "95px", backgroundColor: "#F1F5F7" }} >
-                <Row>
-                    <Col className="dash-head">CUSTOMER</Col>
-                </Row>
-
-                <Row >
-                    <Col lg="8">
-                        <Row>
-                        <MiniWidgetsC reports={reports} />
-                        </Row>
-
-                        <CustomerAnalytics />
-                    </Col>
-                    <Col lg="4">
-                        <Card style={{ width: '100%', boxShadow: " 0 2px 4px rgb(0 0 0 / 8%)" }}>
-                            <Card.Body>
-                                <CustomerDoughnut></CustomerDoughnut>
-                            </Card.Body>
-                        </Card>
-
-                    </Col>
-                </Row>
-            <CustomerTable/>    
-            </Container>
-            
-        </React.Fragment>
-
-    )
+    
 }
 export default Customer;

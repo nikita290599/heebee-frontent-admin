@@ -36,7 +36,7 @@ class CustomerAnalytics extends Component {
             legend: {
                 show: false,
             },
-            colors: ['rgba(102,77,3,0.5)', '#1cbb8c'],
+            colors: ['#6F7BD9', '#1cbb8c'],
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         }
     }

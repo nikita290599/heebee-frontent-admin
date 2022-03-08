@@ -9,7 +9,7 @@ const AllCustomer = (props) => {
 
             <Container fluid className={props.sideToggle === true ? "closeDash" : "openDash"} style={{ paddingTop: "95px", backgroundColor: "#F1F5F7" }} >
                
-            <CustomerTable/>    
+            <CustomerTable products={props.products} currentCustomer={props.currentCustomer} setCustomer={props.setCustomer}/>    
             </Container>
             
         </React.Fragment>

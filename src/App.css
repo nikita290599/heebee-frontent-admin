@@ -1,6 +1,7 @@
 .fullscreen{
     font-family:'Inter' !important;
     background-color: #F1F5F7 !important;
+    overflow: auto;
 }
 .card{
     box-shadow: 0 2px 4px rgb(0 0 0 / 8%) !important;

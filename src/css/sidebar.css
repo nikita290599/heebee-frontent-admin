@@ -1,50 +1,5 @@
 
-/* .pro-sidebar .overlay{
-    display:none !important;
-} */
-/* #my-sidebar .pro-sidebar-inner{
-    background-color: rgba( 248,249,250,1) !important;
-}
-.pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper{
-    background-color: inherit !important;
-   
-}.pro-sidebar .pro-menu.shaped .pro-menu-item > .pro-inner-item > .pro-icon-wrapper:hover{
-    color:var(--primary-color) !important;
-}
-.pro-icon-wrapper{
 
-    color:black ;
-    font-size: 22px !important;
-    font-weight: 700 !important;
-} */
-
-/* .popper-inner{
-    background-color: #D8D2C1 !important;
-    color:var(--primary-color) !important;
-}
-.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item{
-    background-color: var(--primary-color-light) !important;
-    color:var(--primary-color) !important;
-    border-radius: 10px !important;
-}
-
-.pro-sidebar .pro-menu a{
-    color:var(--primary-color) !important;
-    font-weight:600;
-}
-.pro-sidebar{
-    color:black !important;
-}
-.pro-inner-item:hover,.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item:focus {
-    color: var(--primary-color) !important;
-   
-}
-
-#my-sidebar > div.pro-sidebar-inner > div > div.pro-sidebar-content > nav > ul > li > div.pro-inner-item:hover{
-    background-color:#D8D2C1 !important ;
-    
-    border-radius: 10px !important;
-} */
 .heebee-logo{
     color:var(--primary-color);
     padding-left: 20px !important;

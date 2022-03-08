@@ -6,6 +6,7 @@ import Header from './header';
 import { FaUsers } from "react-icons/fa";
 import { RiDashboardFill } from "react-icons/ri";
 import { GrUserWorker } from "react-icons/gr";
+import {ImUserTie} from "react-icons/im";
 import { FaClipboardList } from "react-icons/fa";
 import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
@@ -86,9 +87,9 @@ const Sidebar = (props) => {
             
               <SubMenu title="Customer" icon={<FaUsers />}>
               <MenuItem>Customer Dashboard<NavLink exact="true" to="/customer" /></MenuItem>
-              <MenuItem>All Customers<NavLink exact="true" to="/allCustomer"/></MenuItem>
+              <MenuItem>All Customers<NavLink exact="true" to="/customer/allCustomer"/></MenuItem>
               </SubMenu>
-              <SubMenu title="Employees" icon={<GrUserWorker />}>
+              <SubMenu title="Employees" icon={<ImUserTie/>}>
                 <MenuItem>All Employees<NavLink to="/" /></MenuItem>
                 <MenuItem>Add New<NavLink to="/" /></MenuItem>
               </SubMenu>

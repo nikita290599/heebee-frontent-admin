@@ -11,8 +11,8 @@ const Dashboard = (props) => {
     
     const reports = [
         { icon: RiStackLine, title: "Number of Sales", value: "1452", rate: "2.4%", desc: "From previous period" },
-        { icon: RiStore2Line, title: "Sales Revenue", value: "$ 38452", rate: "2.4%", desc: "From previous period" },
-        { icon: RiBriefcase4Line, title: "Average Sales per Day", value: "$ 15.4", rate: "2.4%", desc: "From previous period" },
+        { icon: RiStore2Line, title: "Sales Revenue", value: "₹ 3845200", rate: "2.4%", desc: "From previous period" },
+        { icon: RiBriefcase4Line, title: "Average Sales per Day", value: "₹ 10000", rate: "2.4%", desc: "From previous period" },
     ]
     return (
         <React.Fragment>

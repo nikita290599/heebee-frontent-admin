@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import "./assets/fonts/Inter-VariableFont_slnt.ttf";
-import './assets/fonts/Nunito-VariableFont_wght.ttf'
+import './assets/fonts/Nunito-VariableFont_wght.ttf';
+import './index.css';
 
 ReactDOM.render(
     <App />,

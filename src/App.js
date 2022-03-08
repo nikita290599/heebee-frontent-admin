@@ -6,38 +6,30 @@ import './App.css';
 import Dashboard from './components/Dashboard/dashboard';
 import Customer from './components/Customer/customer';
 import AllCustomer from './components/Customer/Allcustomer';
+import IndivudualCustomer from './components/Customer/individualCustomers';
+import Error404 from './components/error404';
 import React, { useState } from 'react';
 import Footer from './components/footer';
-import Sidebar2 from './components/Sidebar2';
 function App() {
-  const [sideToggle,setSideToggle]=useState(false);
+  const [sideToggle, setSideToggle] = useState(false);
   const handle = useFullScreenHandle();
+
   return (
     <Router>
-    <FullScreen handle={handle}>
-    <React.Fragment>
+      <FullScreen handle={handle}>
+        <React.Fragment>
 
-<Sidebar handle={handle} setSideToggle={setSideToggle} sideToggle={sideToggle}/>
-<Routes>
-  {/* <Route path="*" element={<Error />} /> */}
-  <Route exact path='/' element={<Dashboard sideToggle={sideToggle}/>}></Route>
-  <Route exact  path='/allCustomer' element={<AllCustomer sideToggle={sideToggle}/>}></Route>
-  <Route exact path='/customer' element={<Customer sideToggle={sideToggle}/>}></Route>
- 
+          <Sidebar handle={handle} setSideToggle={setSideToggle} sideToggle={sideToggle} />
+          <Routes>
+            <Route path='/' element={<Dashboard sideToggle={sideToggle} />}></Route>
+            <Route path='/customer/*' element={<Customer sideToggle={sideToggle} />}></Route>
+            <Route path="*" element={<Error404 />} />
+          </Routes>
+          <Footer />
 
-</Routes>
-<Footer/>
-
-</React.Fragment>
-    </FullScreen>
-         
-
+        </React.Fragment>
+      </FullScreen>
     </Router>
-
-
-    // <div className="App">
-    //   <Sidebar />
-    // </div>
 
   );
 }
