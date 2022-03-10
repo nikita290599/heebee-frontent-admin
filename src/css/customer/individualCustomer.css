@@ -3,6 +3,10 @@
     padding:5px 10px 5px 0 !important;
     border:0 solid white !important; 
 }
+
 .indi-table tr{
     border:0 solid white !important; 
+}
+.Customer-font{
+    font-size: 21px;
 }
