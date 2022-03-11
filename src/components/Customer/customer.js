@@ -12,7 +12,7 @@ class Customer extends React.Component{
         super(props);
         const fakeData = () => {
             let array = [];
-            for (let index = 0; index < 50; index++) {
+            for (let index = 0; index < 10; index++) {
               const element = { "id": `${faker.datatype.uuid()}`, "name": `${faker.name.findName()}`,"address":`${faker.address.streetAddress()} ${faker.address.cityName()}`, "email": `${faker.internet.email()}`, "telephone": `${faker.phone.phoneNumber()}`, "zip": `${faker.address.zipCode()}`, "city": `${faker.address.city()}`, "franchise": `${faker.address.streetAddress()}`, "order date": `${String(faker.date.recent()).slice(0,-30)}`,"gender":`${faker.name.gender(true)}` }
               array.push(element);
             }

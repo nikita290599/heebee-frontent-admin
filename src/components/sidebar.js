@@ -90,7 +90,7 @@ const Sidebar = (props) => {
               <MenuItem>All Customers<NavLink exact="true" to="/customer/allCustomer"/></MenuItem>
               </SubMenu>
               <SubMenu title="Employees" icon={<ImUserTie/>}>
-                <MenuItem>All Employees<NavLink to="/" /></MenuItem>
+                <MenuItem>All Employees<NavLink exact="true" to="/employee" /></MenuItem>
                 <MenuItem>Add New<NavLink to="/" /></MenuItem>
               </SubMenu>
               <SubMenu title="Catalog" icon={<FaClipboardList />}>

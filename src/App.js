@@ -5,6 +5,7 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import './App.css';
 import Dashboard from './components/Dashboard/dashboard';
 import Customer from './components/Customer/customer';
+import Employee from './components/Employees/employee';
 import AllCustomer from './components/Customer/Allcustomer';
 import IndivudualCustomer from './components/Customer/individualCustomers';
 import Error404 from './components/error404';
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Dashboard sideToggle={sideToggle} />}></Route>
             <Route path='/customer/*' element={<Customer sideToggle={sideToggle} />}></Route>
+            <Route path='/employee/*' element={<Employee sideToggle={sideToggle} />}></Route>
             <Route path="*" element={<Error404 />} />
           </Routes>
           <Footer />
