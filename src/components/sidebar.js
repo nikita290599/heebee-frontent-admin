@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 import Header from './header';
 import { FaUsers } from "react-icons/fa";
 import { RiDashboardFill } from "react-icons/ri";
-import { GrUserWorker } from "react-icons/gr";
+import { RiBuilding2Fill} from "react-icons/ri";
 import {ImUserTie} from "react-icons/im";
 import { FaClipboardList } from "react-icons/fa";
 import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
@@ -91,13 +91,13 @@ const Sidebar = (props) => {
               </SubMenu>
               <SubMenu title="Employees" icon={<ImUserTie/>}>
                 <MenuItem>All Employees<NavLink exact="true" to="/employee" /></MenuItem>
-                <MenuItem>Add New<NavLink to="/" /></MenuItem>
+                <MenuItem>Add New<NavLink exact="true" to="/employee/addNew" /></MenuItem>
               </SubMenu>
               <SubMenu title="Catalog" icon={<FaClipboardList />}>
                 <MenuItem>Add Category<NavLink to="/" /></MenuItem>
                 <MenuItem>Add Food Item<NavLink to="/" /></MenuItem>
               </SubMenu>
-              <SubMenu title="Franchise" icon={<FaClipboardList />}>
+              <SubMenu title="Franchise" icon={<RiBuilding2Fill/>}>
                 <MenuItem>All Branch<NavLink to="/" /></MenuItem>
                 <MenuItem>Add Branch<NavLink to="/" /></MenuItem>
                 <MenuItem>Add Franchise<NavLink to="/" /></MenuItem>

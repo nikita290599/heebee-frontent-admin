@@ -1,41 +1,25 @@
-import React from "react"
+import React,{ useState } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory, {
   PaginationProvider, PaginationListStandalone,
   SizePerPageDropdownStandalone
 } from 'react-bootstrap-table2-paginator';
+import faker from "@faker-js/faker";
 import { Link } from "react-router-dom";
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-import "../../css/customer/customerTable.css";
-import { useState } from 'react';
-const CustomerTable = (props) => {
- 
-  const [page,setPage]=useState(1);
-  const [sizePerPage,setSizePerPage]=useState(10);
-  const [productData,setProductData]=useState(props.products);
-  const onClickFunction = (index) => {
-    props.setCustomer(productData[index]);
-  }
-  console.log(productData);
-  function rankFormatter(cell, row, rowIndex, formatExtraData) {
-    return (
-      <div
-        style={{
-          textAlign: "center",
-          cursor: "pointer",
-          lineHeight: "normal"
-        }}>
-        <Link 
-          exact="true"
-          to="/customer/individual"
-          onClick={() => onClickFunction(rowIndex)}
-          className="btn btn-sm btn-warning" >
-          View
-        </Link>
-      </div >
-    );
-  }
+const TotalOrdersTaken = (props) => {
+    const fakeData = () => {
+        let array = [];
+        for (let index = 0; index < 20; index++) {
+          const element = { "Orderid": `${faker.datatype.uuid().slice(0,10)}`, "Ordered Items": `${faker.commerce.product()},${faker.commerce.product()},${faker.commerce.product()}`, "Amount": `${faker.commerce.price()}`, "PaymentMethod": `${faker.finance.transactionType()}`, "PaymentId": `${faker.datatype.uuid().slice(0,7)}`, "coupon": `${faker.datatype.boolean()}`, "Group": `${faker.name.jobDescriptor()}`, "order date": `${String(faker.date.recent()).slice(0,-30)}` }
+          array.push(element);
+        }
+        return array;
+      }
+      const products = fakeData();
+  const [productData,setProductData]=useState(products);
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -43,41 +27,43 @@ const CustomerTable = (props) => {
 
   const columns = [
     {
-      dataField: 'name',
-      text: 'Name',
+      dataField: 'Orderid',
+      text: 'Order ID',
       sort: true
     }, {
-      dataField: 'telephone',
-      text: 'Telephone',
+      dataField: 'Ordered Items',
+      text: 'Ordered Items',
       sort: false
     }, {
-      dataField: 'zip',
-      text: 'Zip',
+      dataField: 'Amount',
+      text: 'Amount',
       sort: false
     }, {
-      dataField: 'city',
-      text: 'City',
+      dataField: 'PaymentMethod',
+      text: 'Payment Method',
       sort: true
     }, {
-      dataField: 'franchise',
-      text: 'Franchise Address',
+      dataField: 'PaymentId',
+      text: 'PaymentId',
       sort: true
     }, {
-      dataField: 'order date',
-      text: 'Order Date',
+      dataField: 'coupon',
+      text: 'Coupon',
       sort: false
-    }, {
-      dataField: 'view',
-      text: 'Actions',
-      isDummyField: true,
-      csvExport: false,
-      formatter: rankFormatter,
-    }
+    },{
+        dataField: 'Group',
+        text: 'Group',
+        sort: false
+      },{
+        dataField: 'order date',
+        text: 'Order date',
+        sort: true
+      }
   ];
 
   const defaultSorted = [{
-    dataField: 'id',
-    order: 'asc'
+    dataField: 'order date',
+    order: 'desc'
   }];
 
   const pageOptions = {
@@ -90,23 +76,23 @@ const CustomerTable = (props) => {
 
   return (
     <React.Fragment>
-      <div className="page-content ">
+      <div className="page-content mt-4 mb-3">
         <form onSubmit={handleSubmit}>
           <Row>
             <Col className="col-12">
               <Card>
                 <Card.Body>
-                  <Card.Title className="h4 mb-2">Customer Datatable </Card.Title>
+                  <Card.Title className="h4 mb-2">Total Orders Taken</Card.Title>
 
                   <PaginationProvider
                     pagination={paginationFactory(pageOptions)}
-                    keyField='id'
+                    keyField='Orderid'
                     columns={columns}
                     data={productData}
                   >
                     {({ paginationProps, paginationTableProps }) => (
                       <ToolkitProvider
-                        keyField='id'
+                        keyField='Orderid'
                         columns={columns}
                         data={productData}
                         search
@@ -131,7 +117,7 @@ const CustomerTable = (props) => {
                               <Col xl="12">
                                 <div className="table-responsive">
                                   <BootstrapTable
-                                    keyField={"id"}
+                                    keyField={"Orderid"}
                                     responsive
                                     bordered={false}
                                     striped={false}
@@ -182,4 +168,4 @@ const CustomerTable = (props) => {
 
 }
 
-export default CustomerTable;
+export default TotalOrdersTaken;

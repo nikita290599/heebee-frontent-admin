@@ -8,6 +8,9 @@
 .widthOfSide .heebee-logo{
     display: none;
 }
-#my-sidebar > div.pro-sidebar-inner > div > div.pro-sidebar-content > nav > ul > li > div.react-slidedown.pro-inner-list-item > div > ul > li:focus{
+/* #my-sidebar > div.pro-sidebar-inner > div > div.pro-sidebar-content > nav > ul > li > div.react-slidedown.pro-inner-list-item > div > ul > li:focus-within{
 background-color: brown !important;
-}
+padding:0 !important;
+width:100% !important;
+
+} */

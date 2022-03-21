@@ -1,6 +1,6 @@
 
 import React, { useState } from "react"
-import { Container, Row, Col, Card, Accordion } from "react-bootstrap";
+import { Container, Row, Col, Card, Button,ButtonGroup } from "react-bootstrap";
 import "../../css/customer/individualCustomer.css";
 import { FaRupeeSign } from "react-icons/fa";
 import { MdFastfood } from "react-icons/md";
@@ -18,10 +18,15 @@ const IndividualCustomer = (props) => {
       <Row>
         <Col className="dash-head">
           Personel Information
+          <ButtonGroup aria-label="TLbutton" id="TLbutton">
+          <a href="#OrderAnalytics"> <Button variant="outline-secondary"  size="sm">Order Analytics</Button></a>
+          <a href="#OrderTable"><Button variant="outline-secondary" size="sm">Order Table</Button></a>
+          <a href="#SalesAnalytics"> <Button variant="outline-secondary" size="sm">Sales Analytics</Button></a>
+          </ButtonGroup>
         </Col>
       </Row>
-      <Row >
-        <Col xl={{ span: "8", order: "first" }} lg={{ span: "8", order: "first" }} md={{ span: "12", order: 2 }} sm={{ span: "12", order: 2 }} xs={{ span: "12", order: 2 }} >
+      <Row id="OrderAnalytics">
+        <Col xl={{ span: "7", order: "first" }} lg={{ span: "7", order: "first" }} md={{ span: "12", order: 2 }} sm={{ span: "12", order: 2 }} xs={{ span: "12", order: 2 }} >
           <Card className="mb-4" style={{ backgroundColor: "#fff", color: "grey" }}>
             <Card.Body >
               <h5><b>Order Analytics</b></h5>
@@ -91,9 +96,9 @@ const IndividualCustomer = (props) => {
           </Row>
         </Col>
         {/* Personel Informtion */}
-        <Col xl={{ span: "4", order: "4" }} lg={{ span: "4", order: "4" }} md={{ span: "12", order: "first" }} sm={{ span: "12", order: "first" }} xs={{ span: "12", order: "first" }}>
+        <Col xl={{ span: "5", order: "4" }} lg={{ span: "5", order: "4" }} md={{ span: "12", order: "first" }} sm={{ span: "12", order: "first" }} xs={{ span: "12", order: "first" }}>
           <Card>
-            <Card.Header className="pt-3 pb-3" style={{ borderBottom: "0 solid white",backgroundColor: "#fff", color: "grey"  }} ><b className="Customer-font ">{currentCustomer.name}</b></Card.Header>
+            <Card.Header className="pt-3 pb-3" style={{ borderBottom: "0 solid white", backgroundColor: "#fff", color: "grey" }} ><b className="Customer-font ">{currentCustomer.name}</b></Card.Header>
             <Card.Body className="pt-0" style={{ overflowX: "auto", paddingRight: "10px" }} >
               <table className="table table-borderless indi-table mb-0">
                 <tbody>
@@ -131,16 +136,16 @@ const IndividualCustomer = (props) => {
         {/*  Personel Informtion Ends*/}
         {/* Order Analytics */}
 
-        <Col xl={{ order: "last" }} lg={{ order: "last" }} md={{ order: "last" }} sm={{ order: "last" }} xs={{ order: "last" }}>
+        <Col id="OrderTable" xl={{ order: "last" }} lg={{ order: "last" }} md={{ order: "last" }} sm={{ order: "last" }} xs={{ order: "last" }}>
           <IndividualOrderTable />
         </Col>
       </Row>
 
       {/* Personel Informtion section ends */}
       {/* sales Analytics */}
-      <Row className="mt-3">
+      <Row id="SalesAnalytics" className="mt-3">
         <Col xl={12}>
-          <Card className="mb-4" style={{ backgroundColor: "#fff", color: "grey"  }}>
+          <Card className="mb-4" style={{ backgroundColor: "#fff", color: "grey" }}>
             <Card.Body >
               <h5><b>Sales Analytics</b></h5>
             </Card.Body>
@@ -213,11 +218,11 @@ const IndividualCustomer = (props) => {
         </Col>
       </Row>
       <Row className="mt-3">
-      <Col xl={4} md={12}>
-       <MostPopularOrder/>
+        <Col xl={4} md={12}>
+          <MostPopularOrder />
         </Col>
         <Col xl={8}>
-          <IndividualCustomerRevenue/>
+          <IndividualCustomerRevenue />
         </Col>
       </Row>
     </Container>

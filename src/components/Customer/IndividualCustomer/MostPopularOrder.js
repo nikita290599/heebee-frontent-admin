@@ -13,7 +13,7 @@ const MostPopularOrder = props => {
     const fakeData = () => {
         let array = [];
         for (let index = 0; index < 5; index++) {
-          const element = { "MostPop": `${faker.commerce.product()}`, "TotalPurchase": `₹${faker.commerce.price()*100}`, "AvgPurchase": `${faker.commerce.price()}`}
+          const element = { "Num":index,"MostPop": `${faker.commerce.product()}`, "TotalPurchase": `₹${faker.commerce.price()*100}`, "AvgPurchase": `${faker.commerce.price()}`}
           array.push(element);
         }
         return array;
@@ -66,13 +66,13 @@ const MostPopularOrder = props => {
   
                     <PaginationProvider
                       pagination={paginationFactory(pageOptions)}
-                      keyField='id'
+                      keyField='Num'
                       columns={columns}
                       data={productData}
                     >
                       {({ paginationProps, paginationTableProps }) => (
                         <ToolkitProvider
-                          keyField='id'
+                          keyField='Num'
                           columns={columns}
                           data={productData}
                           search
@@ -83,7 +83,7 @@ const MostPopularOrder = props => {
                                 <Col xl="12">
                                   <div className="table-responsive">
                                     <BootstrapTable
-                                      keyField={"id"}
+                                      keyField={"Num"}
                                       responsive
                                       bordered={false}
                                       striped={false}

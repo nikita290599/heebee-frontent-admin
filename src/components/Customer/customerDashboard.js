@@ -36,7 +36,10 @@ const CustomerDashboard=(props)=>{
 
             </Col>
         </Row>
-        <CustomerTable products={props.products} currentCustomer={props.currentCustomer} setCustomer={props.setCustomer}/>
+        <Row className="mt-4">
+        <CustomerTable  products={props.products} currentCustomer={props.currentCustomer} setCustomer={props.setCustomer}/>
+        </Row>
+        
     </Container>
     )
 }

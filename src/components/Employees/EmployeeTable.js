@@ -9,15 +9,15 @@ import { Link } from "react-router-dom";
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 import "../../css/customer/customerTable.css";
 import { useState } from 'react';
-const CustomerTable = (props) => {
- 
-  const [page,setPage]=useState(1);
-  const [sizePerPage,setSizePerPage]=useState(10);
-  const [productData,setProductData]=useState(props.products);
+
+const EmployeeTable = props => {
+  const [page, setPage] = useState(1);
+  const [sizePerPage, setSizePerPage] = useState(10);
+  const [productData, setProductData] = useState(props.employee);
   const onClickFunction = (index) => {
-    props.setCustomer(productData[index]);
+    props.setEmployee(index);
   }
-  console.log(productData);
+  console.log(props);
   function rankFormatter(cell, row, rowIndex, formatExtraData) {
     return (
       <div
@@ -26,10 +26,10 @@ const CustomerTable = (props) => {
           cursor: "pointer",
           lineHeight: "normal"
         }}>
-        <Link 
+        <Link
           exact="true"
-          to="/customer/individual"
-          onClick={() => onClickFunction(rowIndex)}
+          to="/employee/individual"
+          onClick={() => onClickFunction(row)}
           className="btn btn-sm btn-warning" >
           View
         </Link>
@@ -43,29 +43,46 @@ const CustomerTable = (props) => {
 
   const columns = [
     {
+      dataField: 'EmpId',
+      text: 'EmpId',
+      sort: false
+    },
+    {
       dataField: 'name',
-      text: 'Name',
+      text: 'Full Name',
       sort: true
     }, {
       dataField: 'telephone',
-      text: 'Telephone',
+      text: 'Phone',
       sort: false
     }, {
-      dataField: 'zip',
-      text: 'Zip',
-      sort: false
-    }, {
-      dataField: 'city',
-      text: 'City',
+      dataField: 'address',
+      text: 'Address',
       sort: true
     }, {
-      dataField: 'franchise',
-      text: 'Franchise Address',
+      dataField: 'email',
+      text: 'Email',
+      sort: false
+    }, {
+      dataField: 'DOB',
+      text: 'DOB',
       sort: true
     }, {
-      dataField: 'order date',
-      text: 'Order Date',
-      sort: false
+      dataField: 'status',
+      text: 'Status',
+      sort: true
+    }, {
+      dataField: 'token',
+      text: 'Token',
+      sort: true
+    }, {
+      dataField: 'Branchname',
+      text: 'Branch',
+      sort: true
+    }, {
+      dataField: 'gender',
+      text: 'Gender',
+      sort: true
     }, {
       dataField: 'view',
       text: 'Actions',
@@ -76,7 +93,7 @@ const CustomerTable = (props) => {
   ];
 
   const defaultSorted = [{
-    dataField: 'id',
+    dataField: 'name',
     order: 'asc'
   }];
 
@@ -87,7 +104,6 @@ const CustomerTable = (props) => {
   }
 
   const { SearchBar } = Search;
-
   return (
     <React.Fragment>
       <div className="page-content ">
@@ -96,17 +112,17 @@ const CustomerTable = (props) => {
             <Col className="col-12">
               <Card>
                 <Card.Body>
-                  <Card.Title className="h4 mb-2">Customer Datatable </Card.Title>
+                  <Card.Title className="h4 mb-2 ">Employee Datatable </Card.Title>
 
                   <PaginationProvider
                     pagination={paginationFactory(pageOptions)}
-                    keyField='id'
+                    keyField='EmpId'
                     columns={columns}
                     data={productData}
                   >
                     {({ paginationProps, paginationTableProps }) => (
                       <ToolkitProvider
-                        keyField='id'
+                        keyField='EmpId'
                         columns={columns}
                         data={productData}
                         search
@@ -131,7 +147,8 @@ const CustomerTable = (props) => {
                               <Col xl="12">
                                 <div className="table-responsive">
                                   <BootstrapTable
-                                    keyField={"id"}
+                             
+                                    keyField={"EmpId"}
                                     responsive
                                     bordered={false}
                                     striped={false}
@@ -175,11 +192,12 @@ const CustomerTable = (props) => {
               </Card>
             </Col>
           </Row>
-          </form>
+        </form>
       </div>
     </React.Fragment>
-  )
+  );
+};
 
-}
 
-export default CustomerTable;
+
+export default EmployeeTable;

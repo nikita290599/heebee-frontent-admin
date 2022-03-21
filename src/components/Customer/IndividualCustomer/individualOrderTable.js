@@ -11,15 +11,13 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit/dist/rea
 const IndividualOrderTable = (props) => {
     const fakeData = () => {
         let array = [];
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 20; index++) {
           const element = { "Orderid": `${faker.datatype.uuid().slice(0,10)}`, "Ordered Items": `${faker.commerce.product()},${faker.commerce.product()},${faker.commerce.product()}`, "Amount": `${faker.commerce.price()}`, "PaymentMethod": `${faker.finance.transactionType()}`, "PaymentId": `${faker.datatype.uuid().slice(0,7)}`, "coupon": `${faker.datatype.boolean()}`, "Group": `${faker.name.jobDescriptor()}`, "order date": `${String(faker.date.recent()).slice(0,-30)}` }
           array.push(element);
         }
         return array;
       }
       const products = fakeData();
-//   const [page,setPage]=useState(1);
-//   const [sizePerPage,setSizePerPage]=useState(10);
   const [productData,setProductData]=useState(products);
 
   async function handleSubmit(event) {
@@ -78,7 +76,7 @@ const IndividualOrderTable = (props) => {
 
   return (
     <React.Fragment>
-      <div className="page-content mt-4">
+      <div className="page-content mt-4 mb-3">
         <form onSubmit={handleSubmit}>
           <Row>
             <Col className="col-12">
@@ -88,13 +86,13 @@ const IndividualOrderTable = (props) => {
 
                   <PaginationProvider
                     pagination={paginationFactory(pageOptions)}
-                    keyField='id'
+                    keyField='Orderid'
                     columns={columns}
                     data={productData}
                   >
                     {({ paginationProps, paginationTableProps }) => (
                       <ToolkitProvider
-                        keyField='id'
+                        keyField='Orderid'
                         columns={columns}
                         data={productData}
                         search
@@ -119,7 +117,7 @@ const IndividualOrderTable = (props) => {
                               <Col xl="12">
                                 <div className="table-responsive">
                                   <BootstrapTable
-                                    keyField={"id"}
+                                    keyField={"Orderid"}
                                     responsive
                                     bordered={false}
                                     striped={false}

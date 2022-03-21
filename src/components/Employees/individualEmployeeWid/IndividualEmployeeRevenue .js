@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Card,Button,ButtonGroup } from "react-bootstrap";
+import { Card,ButtonGroup,Button } from "react-bootstrap";
 //Import Charts
 import ReactApexChart from 'react-apexcharts';
-class IndividualCustomerRevenue extends Component {
+class IndividualEmployeeRevenue extends Component {
   
     
     state = {
@@ -50,7 +50,7 @@ class IndividualCustomerRevenue extends Component {
                                 <Button size="sm" variant="light" style={{backgroundColor:"#EFF2F7",fontSize:"13px"}} type="button">Monthly</Button>
                             </ButtonGroup>
                         </div>
-                        <h4 className="card-title mb-4 revenue" >Customer Analytics</h4>
+                        <h4 className="card-title mb-4 revenue" >Employee Sales Analytics</h4>
 
                         <div>
                             <div id="line-column-chart" className="apex-charts" dir="ltr">
@@ -65,4 +65,4 @@ class IndividualCustomerRevenue extends Component {
     }
 }
 
-export default IndividualCustomerRevenue;
+export default IndividualEmployeeRevenue;

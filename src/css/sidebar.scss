@@ -1,9 +1,9 @@
 $sidebar-bg-color: rgba(248,249,250,1);
 $sidebar-color: black;
-$highlight-color: #473603 !default;
-$submenu-bg-color: rgba(102, 77, 3, 0.1);
-$submenu-bg-color-collapsed: #d8d3c0;
-$icon-bg-color: rgba(102, 77, 3, 0.1);
+$highlight-color:  rgb(12, 19, 73);
+$submenu-bg-color: rgba(132,143,223,0.3);
+$submenu-bg-color-collapsed: #D5D9F2;
+$icon-bg-color: rgba(132,143,223,0.7);
 $icon-size: 35px !default;
 $submenu-indent: 24px !default;
 .pro-sidebar {
@@ -17,10 +17,24 @@ $submenu-indent: 24px !default;
           position: relative;
           background-color: $submenu-bg-color;
           font-size: 16px;
-
+          
+         
           > div > ul {
             padding-top: 15px;
             padding-bottom: 15px;
+            >li{
+              &:focus-within{
+                background-color:rgba(132,143,223,0.7);
+                font-weight: 600;
+                width:100% !important;
+                margin-left: -12px;
+                padding-left: 20px;
+                padding-right: 0px !important;
+                padding-top: 1.5px;
+                padding-bottom: 1.5px;
+                border-radius: 5px;
+              }
+            }
           }
         }
       }
@@ -43,7 +57,7 @@ $submenu-indent: 24px !default;
       &:focus {
         outline: none;
         color: $highlight-color;
-        background-color: rgba(102, 77, 3, 0.25) !important;
+        background-color: rgba(132,143,223,0.3) !important;
         font-weight: 600;
       }
     }
@@ -75,7 +89,7 @@ $submenu-indent: 24px !default;
       &:focus {
         outline: none;
         color: $highlight-color;
-        background-color: rgba(102, 77, 3, 0.25);
+        background-color: rgba(132,143,223,0.6) ;
         font-weight: 600;
       }
       > .pro-icon-wrapper {
@@ -236,6 +250,9 @@ $submenu-indent: 24px !default;
           > .pro-inner-list-item {
             background-color: $submenu-bg-color-collapsed;
             z-index: 111;
+            &:focus-within{
+             background-color: rgba(132,143,223,0.7) !important;
+            }
           }
           position: relative;
           &::before {
@@ -264,7 +281,7 @@ $submenu-indent: 24px !default;
               visibility: hidden;
               min-width: 220px;
               max-width: 270px;
-              background-color: transparent;
+              background-color: rgba(0,0,0,0) !important;
               max-height: 100%;
               padding-left: 3px;
               &.has-arrow {
