@@ -88,19 +88,20 @@ const Sidebar = (props) => {
               <SubMenu title="Customer" icon={<FaUsers />}>
               <MenuItem>Customer Dashboard<NavLink exact="true" to="/customer" /></MenuItem>
               <MenuItem>All Customers<NavLink exact="true" to="/customer/allCustomer"/></MenuItem>
+              <MenuItem>Add New Customers<NavLink exact="true" to="/customer/addCustomer"/></MenuItem>
               </SubMenu>
               <SubMenu title="Employees" icon={<ImUserTie/>}>
                 <MenuItem>All Employees<NavLink exact="true" to="/employee" /></MenuItem>
                 <MenuItem>Add New<NavLink exact="true" to="/employee/addNew" /></MenuItem>
               </SubMenu>
               <SubMenu title="Catalog" icon={<FaClipboardList />}>
-                <MenuItem>Add Category<NavLink to="/" /></MenuItem>
-                <MenuItem>Add Food Item<NavLink to="/" /></MenuItem>
+                <MenuItem>Add Category<NavLink to="/catalog/AddCategory" /></MenuItem>
+                <MenuItem>Add Food Item<NavLink to="/catalog/AddProduct" /></MenuItem>
               </SubMenu>
               <SubMenu title="Franchise" icon={<RiBuilding2Fill/>}>
                 <MenuItem>All Branch<NavLink to="/" /></MenuItem>
-                <MenuItem>Add Branch<NavLink to="/" /></MenuItem>
-                <MenuItem>Add Franchise<NavLink to="/" /></MenuItem>
+                <MenuItem>Add Branch<NavLink to="/branch/AddBranch" /></MenuItem>
+                <MenuItem>Add Franchise<NavLink to="/branch/AddFranchise" /></MenuItem>
               </SubMenu>
             </Menu>
           </SidebarContent>

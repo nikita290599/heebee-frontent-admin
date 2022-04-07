@@ -7,6 +7,7 @@ import IndividualCustomer from "./individualCustomers";
 import AllCustomer from "./Allcustomer";
 import CustomerDashboard from "./customerDashboard";
 import faker from "@faker-js/faker";
+import AddCustomer from "./AddCustomer";
 class Customer extends React.Component{
     constructor(props){
         super(props);
@@ -32,6 +33,7 @@ class Customer extends React.Component{
             <Routes>
                 <Route path="/" element={<CustomerDashboard products={this.state.products} sideToggle={this.props.sideToggle} currentCustomer={this.state.currentCustomer} setCustomer={this.setCustomer} />} />
                 <Route path="/individual" element={<IndividualCustomer products={this.state.products}  sideToggle={this.props.sideToggle}  currentCustomer={this.state.currentCustomer} />} />
+                <Route path="/addCustomer" element={<AddCustomer products={this.state.products}  sideToggle={this.props.sideToggle}  currentCustomer={this.state.currentCustomer} />} />
                 <Route path='/allCustomer' element={<AllCustomer products={this.state.products}  sideToggle={this.props.sideToggle}  currentCustomer={this.state.currentCustomer} setCustomer={this.setCustomer} />}></Route>
             </Routes>
         </React.Fragment>)

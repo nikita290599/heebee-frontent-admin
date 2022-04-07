@@ -11,6 +11,8 @@ import IndivudualCustomer from './components/Customer/individualCustomers';
 import Error404 from './components/error404';
 import React, { useState } from 'react';
 import Footer from './components/footer';
+import Branch from './components/Branch/Branch';
+import Catalog from './components/Catalog/Catalog';
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
   const handle = useFullScreenHandle();
@@ -19,16 +21,16 @@ function App() {
     <Router>
       <FullScreen handle={handle}>
         <React.Fragment>
-
           <Sidebar handle={handle} setSideToggle={setSideToggle} sideToggle={sideToggle} />
           <Routes>
             <Route path='/' element={<Dashboard sideToggle={sideToggle} />}></Route>
             <Route path='/customer/*' element={<Customer sideToggle={sideToggle} />}></Route>
             <Route path='/employee/*' element={<Employee sideToggle={sideToggle} />}></Route>
+            <Route path="/branch/*" element={<Branch sideToggle={sideToggle} />}></Route>
+            <Route path="/catalog/*" element={<Catalog sideToggle={sideToggle} />}></Route>
             <Route path="*" element={<Error404 />} />
           </Routes>
           <Footer />
-
         </React.Fragment>
       </FullScreen>
     </Router>
