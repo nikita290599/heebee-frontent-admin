@@ -99,7 +99,7 @@ const Sidebar = (props) => {
                 <MenuItem>Add Food Item<NavLink to="/catalog/AddProduct" /></MenuItem>
               </SubMenu>
               <SubMenu title="Franchise" icon={<RiBuilding2Fill/>}>
-                <MenuItem>All Branch<NavLink to="/" /></MenuItem>
+                <MenuItem>All Branch<NavLink to="/branch/AllBranch" /></MenuItem>
                 <MenuItem>Add Branch<NavLink to="/branch/AddBranch" /></MenuItem>
                 <MenuItem>Add Franchise<NavLink to="/branch/AddFranchise" /></MenuItem>
               </SubMenu>

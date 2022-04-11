@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './components/Dashboard/dashboard';
 import Customer from './components/Customer/customer';
 import Employee from './components/Employees/employee';
@@ -13,6 +14,7 @@ import React, { useState } from 'react';
 import Footer from './components/footer';
 import Branch from './components/Branch/Branch';
 import Catalog from './components/Catalog/Catalog';
+import { ToastContainer } from 'react-toastify';
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
   const handle = useFullScreenHandle();
@@ -32,7 +34,10 @@ function App() {
           </Routes>
           <Footer />
         </React.Fragment>
+       
       </FullScreen>
+      <ToastContainer />
+     
     </Router>
 
   );
