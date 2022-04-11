@@ -27,7 +27,7 @@ const AddNewCategory = (props) => {
                   {props.uploadedImage &&  <img className="mt-2" src={props.preview} style={{width:"200px",maxHeight:"200px"}} /> }
                 </div></Col>
 
-                <Col><div className="mb-3 p-2">
+                <Col><div className="mb-3 p-2" >
                 <label className="form-label d-block">Branches</label>
                   {props.displayBranch()}
                   </div>

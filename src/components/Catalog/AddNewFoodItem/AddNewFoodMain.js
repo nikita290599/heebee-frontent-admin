@@ -3,29 +3,33 @@ import ReactMultiselectCheckboxes from 'react-multiselect-checkboxes/lib/ReactMu
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getBranches } from '../../../store/actionCreators/Branch/BranchAction';
-import { getAllProducts } from '../../../store/actionCreators/Catalog/getProductsAction';
-import AddCategoryToBranches from './AddCategoryToBranches';
-import AddNewCategory from './AddNewCategory';
-import "../../../css/catalog/common.css"
-const AddNewCatMain = (props) => {
-    // step1 vars
-    const branch = useSelector(state => state.branch)
-    const [options, setOptions] = useState([])
+import AddNewProduct from './AddNewProduct';
+import AddProductToCategories from './AddProductToCategories';
+
+const AddNewFoodMain = (props) => {
+    const [step, setStep] = useState(1)
     const dispatch = useDispatch();
+    const branch = useSelector(state => state.branch)
     const [selectedBranches, setSelected] = useState([]);
+    const [options, setOptions] = useState([])
     const [uploadedImage, setUploadedIM] = useState(null);
     const [preview, setPreview] = useState()
-    const [step, setStep] = useState(1)
-    const [catName, setCatname] = useState({
-        name: "",
-        description: ""
+    const [Newproduct,setNewProduct]=useState({
+        product_name:"",
+        sku:0,
+        items_available:0,
+        description:"",
+        product_type:"",
+        price:0.0,
+        billing_address:"",
+        shipping_address:"",
+        image:uploadedImage,
+        status:"",
+        food_type:""
     })
-
     useEffect(() => {
         dispatch(getBranches());
-        dispatch(getAllProducts());
     }, [])
-    // getting branches in a particular format
     useEffect(() => {
         let array = []
         if (branch.data) {
@@ -36,7 +40,28 @@ const AddNewCatMain = (props) => {
         setOptions(array)
         console.log(array)
     }, [branch])
-    // HELPER FUNCTIONS branches  FOR CHECKBOXDROPDOWN
+       // Fucntionality for upload and preview of image 
+       useEffect(() => {
+        if (!uploadedImage) {
+            setPreview(undefined)
+            return
+        }
+
+        const objectUrl = URL.createObjectURL(uploadedImage)
+        setPreview(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [uploadedImage])
+    const imageUpload = (e) => {
+        const file = e.target.files[0]
+        if (file) {
+            setUploadedIM(file)
+        }
+        else {
+            setUploadedIM(null)
+        }
+    }
     function getDropdownButtonLabel({ placeholderButtonLabel, value }) {
         if (value && value.some((o) => o.value === "*")) {
             return `${placeholderButtonLabel}: All`;
@@ -62,10 +87,8 @@ const AddNewCatMain = (props) => {
     }
 
     const displayBranch = () => {
-
         if (options) {
             return <div className='categorySelect'><ReactMultiselectCheckboxes
-      
                 options={[{ label: "All", value: "*" }, ...options]}
                 placeholderButtonLabel="Branches"
                 getDropdownButtonLabel={getDropdownButtonLabel}
@@ -77,41 +100,19 @@ const AddNewCatMain = (props) => {
         }
 
     }
-    // HELPER FUNCTIONS FOR branches CHECKBOXDROPDOWN ENDS
-    // Fucntionality for upload and preview of image 
-    useEffect(() => {
-        if (!uploadedImage) {
-            setPreview(undefined)
-            return
-        }
-
-        const objectUrl = URL.createObjectURL(uploadedImage)
-        setPreview(objectUrl)
-
-        // free memory when ever this component is unmounted
-        return () => URL.revokeObjectURL(objectUrl)
-    }, [uploadedImage])
-    const imageUpload = (e) => {
-        const file = e.target.files[0]
-        if (file) {
-            setUploadedIM(file)
-        }
-        else {
-            setUploadedIM(null)
-        }
+    const handleChange=(entry)=>(e)=>{ 
+        setNewProduct({...Newproduct,[entry]:e.target.value})
     }
-    // Fucntionality for upload and preview of image ENDS
-    // OnClick for first form 
-    const onClickCat = (e) => {
+    const nextStep=(e)=>{
         if (selectedBranches.length > 0) {
             let SelectedB = []
             selectedBranches.map((item, index) => {
                 SelectedB.push(item.value)
             })
             setStep(step + 1)
-            e.preventDefault();
+    
 
-            console.log(step, catName, SelectedB)
+            console.log(step, Newproduct, SelectedB)
             // dispatch(addNewCategory(catName.name,catName.description,preview,SelectedB))
         }
         else {
@@ -126,15 +127,9 @@ const AddNewCatMain = (props) => {
                 progress: undefined, theme: "colored"
             })
         }
-
-
+        e.preventDefault();
     }
-    const handleChange = (input) => (e) => {
-        setCatname({ ...catName, [input]: e.target.value })
-    }
-    // OnClick for first form Ends 
-    // STEP 1 ENDS
-    // STEP 2 VARS
+    //   STEP 2 FORM STARTS
     const products = useSelector(state => state.products)
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [optionsP, setOptionsp] = useState([])
@@ -176,7 +171,7 @@ const AddNewCatMain = (props) => {
     const displayCategory = () => {
 
         if (optionsP) {
-            return <div id="catDropdown" className='categorySelect' style={{paddingBottom:"400px"}}><ReactMultiselectCheckboxes
+            return <div id="catDropdown" className='categorySelect' style={{ paddingBottom: "400px" }}><ReactMultiselectCheckboxes
                 options={[{ label: "All", value: "*" }, ...optionsP]}
                 placeholderButtonLabel="Products"
                 getDropdownButtonLabel={getDropdownButtonLabel1}
@@ -190,40 +185,39 @@ const AddNewCatMain = (props) => {
         }
 
     }
-    //    STEP2 ENDS
-
-    // logic for multipart form
     const main = () => {
         if (step === 1) {
             return (
-                <><AddNewCategory
-                
+                <><AddNewProduct
                     sideToggle={props.sideToggle}
-                    catName={catName}
-                    handleChange={handleChange}
+                    displayBranch={displayBranch}
+                    setStep={setStep}
                     imageUpload={imageUpload}
                     uploadedImage={uploadedImage}
                     preview={preview}
-                    displayBranch={displayBranch}
-                    onClickCat={onClickCat}
+                    Newproduct={Newproduct}
+                    handleChange={handleChange}
+                    nextStep={nextStep}
+
                 />
 
                 </>)
         }
         else {
-            return <><AddCategoryToBranches
+            return <><AddProductToCategories
                 sideToggle={props.sideToggle}
-                displayCategory={displayCategory}
                 setStep={setStep}
+                displayCategory={displayCategory}
             />
 
             </>
         }
     }
     return (
-        <div>{main()}
+        <div>
+            {main()}
         </div>
     );
 };
 
-export default AddNewCatMain;
+export default AddNewFoodMain;

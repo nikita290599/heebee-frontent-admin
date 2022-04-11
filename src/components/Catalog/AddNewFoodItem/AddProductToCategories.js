@@ -1,12 +1,12 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-const AddCategoryToBranches = (props) => {
-
+import "../../../css/catalog/common.css"
+const AddProductToCategories = (props) => {
     return (
         <Container fluid className={props.sideToggle === true ? "closeDash" : "openDash"} style={{ paddingTop: "95px", backgroundColor: "#F1F5F7" }} >
             <div className='row d-flex justify-content-center'>
                 <div className='form-container'>
-                    <div className='form-head'>Add Category To Branches</div>
+                    <div className='form-head'>Add Product To Categories</div>
                     <div className='form-body'>
                         <form >
                             <Row>
@@ -32,4 +32,4 @@ const AddCategoryToBranches = (props) => {
     );
 };
 
-export default AddCategoryToBranches;
+export default AddProductToCategories;
