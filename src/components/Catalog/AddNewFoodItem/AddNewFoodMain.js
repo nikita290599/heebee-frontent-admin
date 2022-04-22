@@ -3,6 +3,8 @@ import ReactMultiselectCheckboxes from 'react-multiselect-checkboxes/lib/ReactMu
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getBranches } from '../../../store/actionCreators/Branch/BranchAction';
+import AddAddons from './AddAddons';
+import AddNewAddons from './AddNewAddons';
 import AddNewProduct from './AddNewProduct';
 import AddProductToCategories from './AddProductToCategories';
 
@@ -14,18 +16,18 @@ const AddNewFoodMain = (props) => {
     const [options, setOptions] = useState([])
     const [uploadedImage, setUploadedIM] = useState(null);
     const [preview, setPreview] = useState()
-    const [Newproduct,setNewProduct]=useState({
-        product_name:"",
-        sku:0,
-        items_available:0,
-        description:"",
-        product_type:"",
-        price:0.0,
-        billing_address:"",
-        shipping_address:"",
-        image:uploadedImage,
-        status:"",
-        food_type:""
+    const [Newproduct, setNewProduct] = useState({
+        product_name: "",
+        sku: 0,
+        items_available: 0,
+        description: "",
+        product_type: "",
+        price: 0.0,
+        billing_address: "",
+        shipping_address: "",
+        image: uploadedImage,
+        status: "",
+        food_type: ""
     })
     useEffect(() => {
         dispatch(getBranches());
@@ -37,11 +39,12 @@ const AddNewFoodMain = (props) => {
                 array.push({ label: item.branch_name, value: item.branch_id })
             })
         }
+        else array = []
         setOptions(array)
         console.log(array)
     }, [branch])
-       // Fucntionality for upload and preview of image 
-       useEffect(() => {
+    // Fucntionality for upload and preview of image 
+    useEffect(() => {
         if (!uploadedImage) {
             setPreview(undefined)
             return
@@ -100,19 +103,19 @@ const AddNewFoodMain = (props) => {
         }
 
     }
-    const handleChange=(entry)=>(e)=>{ 
-        setNewProduct({...Newproduct,[entry]:e.target.value})
+    const handleChange = (entry) => (e) => {
+        setNewProduct({ ...Newproduct, [entry]: e.target.value })
     }
-    const nextStep=(e)=>{
+    const nextStep = (e) => {
         if (selectedBranches.length > 0) {
             let SelectedB = []
             selectedBranches.map((item, index) => {
                 SelectedB.push(item.value)
             })
             setStep(step + 1)
-    
 
-            console.log(step, Newproduct, SelectedB)
+
+            console.log(step, Newproduct, SelectedB,addon)
             // dispatch(addNewCategory(catName.name,catName.description,preview,SelectedB))
         }
         else {
@@ -185,6 +188,17 @@ const AddNewFoodMain = (props) => {
         }
 
     }
+    // Add adons functions start
+    const [addon,setAddon]=useState({
+        title:"",
+        sku:"",
+        order:null,
+        price:null
+      })
+      const handleChangeAddon=(value)=>(event)=>{
+        setAddon({...addon,[value]:event.target.value})
+      }
+    // Add adons functions end
     const main = () => {
         if (step === 1) {
             return (
@@ -199,6 +213,18 @@ const AddNewFoodMain = (props) => {
                     handleChange={handleChange}
                     nextStep={nextStep}
 
+                />
+
+                </>)
+        }
+        else if (step === 2) {
+            return (
+                <><AddAddons
+                    sideToggle={props.sideToggle}
+                    setStep={setStep}
+                    displayCategory={displayCategory}
+                    addon={addon}
+                    handleChangeAddon={handleChangeAddon}
                 />
 
                 </>)

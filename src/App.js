@@ -15,6 +15,7 @@ import Footer from './components/footer';
 import Branch from './components/Branch/Branch';
 import Catalog from './components/Catalog/Catalog';
 import { ToastContainer } from 'react-toastify';
+import User from './components/User/AddAdmin/user';
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
   const handle = useFullScreenHandle();
@@ -30,6 +31,7 @@ function App() {
             <Route path='/employee/*' element={<Employee sideToggle={sideToggle} />}></Route>
             <Route path="/branch/*" element={<Branch sideToggle={sideToggle} />}></Route>
             <Route path="/catalog/*" element={<Catalog sideToggle={sideToggle} />}></Route>
+            <Route path="/user/*" element={<User sideToggle={sideToggle} />}></Route>
             <Route path="*" element={<Error404 />} />
           </Routes>
           <Footer />

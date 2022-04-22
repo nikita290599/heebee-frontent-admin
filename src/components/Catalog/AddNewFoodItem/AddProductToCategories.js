@@ -18,7 +18,7 @@ const AddProductToCategories = (props) => {
                             </Row>
                             <Row>
                                 <Col> <div className="mb-2 p-2">
-                                <button className='btn btn-primary me-2  ' onClick={()=>props.setStep(1)} >Back</button>
+                                <button className='btn btn-primary me-2  ' onClick={()=>props.setStep(2)} >Back</button>
                                 <button className='btn btn-primary me-2  '  >Submit</button>
                                 </div></Col>
                                                              

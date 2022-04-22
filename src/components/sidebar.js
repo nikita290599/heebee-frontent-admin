@@ -1,22 +1,26 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from "../assets/logo.png";
-
 import Header from './header';
 import { FaUsers } from "react-icons/fa";
 import { RiDashboardFill } from "react-icons/ri";
-import { RiBuilding2Fill} from "react-icons/ri";
-import {ImUserTie} from "react-icons/im";
+import { RiBuilding2Fill } from "react-icons/ri";
+import {RiAdminFill} from "react-icons/ri";
+import { ImUserTie } from "react-icons/im";
 import { FaClipboardList } from "react-icons/fa";
 import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 import "../css/sidebar.css";
 import "../css/sidebar.scss";
+import { useDispatch, useSelector } from 'react-redux';
+import { setSideToggle } from '../store/actionCreators/SideBar';
 const Sidebar = (props) => {
   const [widthSideMax, setWidthMax] = useState("240px");
   const [widthOfSideMin, setWidthMin] = useState("80px");
-  const [widthSide,setWidthSide]=useState("270px");
+  const [widthSide, setWidthSide] = useState("270px");
   const size = useWindowSize();
+  const open=useSelector(state=>state.toggle)
+  const dispatch= useDispatch();
   function useWindowSize() {
 
     const [windowSize, setWindowSize] = useState({
@@ -57,16 +61,30 @@ const Sidebar = (props) => {
 
   const clickHandler = () => {
     if (size.width <= "768") {
-      if (props.sideToggle === false) { props.setSideToggle(true)  } else { props.setSideToggle(false)  }
+      if (props.sideToggle === false) { props.setSideToggle(true) } else { props.setSideToggle(false) }
 
     }
     if (size.width > "768") {
-      if (props.sideToggle === true) { props.setSideToggle(false) ; setWidthSide("270px")} else { props.setSideToggle(true); setWidthSide("100px") }
+      if (props.sideToggle === true) { props.setSideToggle(false); setWidthSide("270px") } else { props.setSideToggle(true); setWidthSide("100px") }
 
     }
 
   }
-
+  useEffect(()=>{
+     console.log(open)
+  },[open])
+  function openChange(name){
+    for (var i = 1; i < 7; i++) {
+      if (name === `open${i}`) {
+        dispatch(setSideToggle(`open${i}`,true))
+      }
+      else{
+        if(open[`open${i}`]===true){
+          dispatch(setSideToggle(`open${i}`,false))
+        }
+      }
+    } 
+  }
 
   return (
     <React.Fragment>
@@ -75,34 +93,39 @@ const Sidebar = (props) => {
         <ProSidebar id="my-sidebar" width={widthSideMax} collapsedWidth={widthOfSideMin} collapsed={props.sideToggle} >
           <SidebarHeader >
             <div id="mainLeftTrigger" className='w-100 ' style={{ height: "77px" }} onClick={clickHandler}>
-             <div className='h-100 d-flex justify-content-center align-items-center'><img src={logo} width="26px" alt="logo" className='' ></img><div className='w-75 heebee-logo '>HeeBee</div></div> 
+              <div className='h-100 d-flex justify-content-center align-items-center'><img src={logo} width="26px" alt="logo" className='' ></img><div className='w-75 heebee-logo '>HeeBee</div></div>
             </div>
 
           </SidebarHeader>
           <SidebarContent>
             <Menu iconShape="round" >
-              <SubMenu title="Dashboard" icon={<RiDashboardFill />}>
-              <MenuItem>My Dashboard<NavLink to="/" /></MenuItem>
+              <SubMenu open={open.open1} onOpenChange={()=>openChange("open1") } title="Dashboard" icon={<RiDashboardFill />}>
+                <MenuItem>My Dashboard<NavLink to="/" /></MenuItem>
               </SubMenu>
-            
-              <SubMenu title="Customer" icon={<FaUsers />}>
-              <MenuItem>Customer Dashboard<NavLink exact="true" to="/customer" /></MenuItem>
-              <MenuItem>All Customers<NavLink exact="true" to="/customer/allCustomer"/></MenuItem>
-              <MenuItem>Add New Customers<NavLink exact="true" to="/customer/addCustomer"/></MenuItem>
+
+              <SubMenu open={open.open2} onOpenChange={()=>openChange("open2") } title="Customer" icon={<FaUsers />}>
+                <MenuItem>Customer Dashboard<NavLink exact="true" to="/customer" /></MenuItem>
+                <MenuItem>All Customers<NavLink exact="true" to="/customer/allCustomer" /></MenuItem>
+                <MenuItem>Add New Customers<NavLink exact="true" to="/customer/addCustomer" /></MenuItem>
               </SubMenu>
-              <SubMenu title="Employees" icon={<ImUserTie/>}>
+              <SubMenu open={open.open3} onOpenChange={()=>openChange("open3") } title="Employees" icon={<ImUserTie />}>
                 <MenuItem>All Employees<NavLink exact="true" to="/employee" /></MenuItem>
-                <MenuItem>Add New<NavLink exact="true" to="/employee/addNew" /></MenuItem>
+                {/* <MenuItem>Add New<NavLink exact="true" to="/employee/addNew" /></MenuItem> */}
               </SubMenu>
-              <SubMenu title="Catalog" icon={<FaClipboardList />}>
+              <SubMenu open={open.open4} onOpenChange={()=>openChange("open4")} title="Catalog" icon={<FaClipboardList />}>
                 <MenuItem>Add Category<NavLink to="/catalog/AddCategory" /></MenuItem>
                 <MenuItem>Add Food Item<NavLink to="/catalog/AddProduct" /></MenuItem>
+                <MenuItem>Add Addons<NavLink to="/catalog/AddAddons" /></MenuItem>
               </SubMenu>
-              <SubMenu title="Franchise" icon={<RiBuilding2Fill/>}>
+              <SubMenu open={open.open5} onOpenChange={()=>openChange("open5") } title="Franchise" icon={<RiBuilding2Fill />}>
                 <MenuItem>All Branch<NavLink to="/branch/AllBranch" /></MenuItem>
                 <MenuItem>Add Branch<NavLink to="/branch/AddBranch" /></MenuItem>
                 <MenuItem>Add Franchise<NavLink to="/branch/AddFranchise" /></MenuItem>
               </SubMenu>
+              <SubMenu open={open.open6} onOpenChange={()=>openChange("open6") } title="User" icon={<RiAdminFill/>}>
+                <MenuItem>Add Employee<NavLink to="/employee/addNew" /></MenuItem>
+                <MenuItem>Add Admin<NavLink to="/user" /></MenuItem>
+                  </SubMenu>
             </Menu>
           </SidebarContent>
 

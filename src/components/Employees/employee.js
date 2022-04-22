@@ -43,8 +43,5 @@ class Employee extends React.Component {
 
 };
 
-Employee.propTypes = {
-
-};
 
 export default Employee;

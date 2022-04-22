@@ -97,7 +97,7 @@ const AddNewProduct = (props) => {
                 </div></Col>
 
               </Row>
-              <div className="p-2"><button className='btn btn-primary btn-lg ' onClick={props.nextStep} >Next</button></div>
+              <div className="p-2"><button className='btn btn-primary  ' onClick={props.nextStep} >Next</button></div>
 
             </form>
           </div>
